@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  cache:
+    type: none
+    redis:
+      time-to-live: PT10S
+  data:
+    redis:
+      host: localhost # tu tez jak odpalasz z maszynki musisz zmieniac na localhost zamiast redis
+
+scheduling:
+  enabled: false
+
+

@@ -1,0 +1,44 @@
+[
+  {
+    "salonId": 1,
+    "dayOfWeek": "MONDAY",
+    "openingTime": "09:00",
+    "closingTime": "19:00"
+  },
+  {
+    "salonId": 1,
+    "dayOfWeek": "TUESDAY",
+    "openingTime": "09:00",
+    "closingTime": "19:00"
+  },
+  {
+    "salonId": 1,
+    "dayOfWeek": "WEDNESDAY",
+    "openingTime": "09:00",
+    "closingTime": "19:00"
+  },
+  {
+    "salonId": 1,
+    "dayOfWeek": "THURSDAY",
+    "openingTime": "09:00",
+    "closingTime": "19:00"
+  },
+  {
+    "salonId": 1,
+    "dayOfWeek": "FRIDAY",
+    "openingTime": "09:00",
+    "closingTime": "19:00"
+  },
+  {
+    "salonId": 1,
+    "dayOfWeek": "SATURDAY",
+    "openingTime": "10:00",
+    "closingTime": "14:00"
+  },
+  {
+    "salonId": 1,
+    "dayOfWeek": "SUNDAY",
+    "openingTime": "10:00",
+    "closingTime": "14:00"
+  }
+]

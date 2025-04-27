@@ -1,0 +1,72 @@
+spring:
+  flyway:
+    enabled: false
+  application:
+    name: reservation-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/reservations #jesli chce uruchomic bez dockera to zmien na localhost zamiast postgres
+    username: postgres
+    password: postgres
+  hikari:
+    connection-timeout: 30000
+    maximum-pool-size: 5
+    validation-timeout: 5000
+    max-lifetime: 1800000
+    idle-timeout: 450000
+    connection-test-query: SELECT 1
+  jpa:
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      mode: always
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+
+  cache:
+    type: none
+    redis:
+      time-to-live: PT30M
+
+  data:
+    redis:
+      host: localhost # tu tez jak odpalasz z maszynki musisz zmieniac na localhost zamiast redis
+      port: 6379
+
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui
+
+reservation:
+  send-remind: "0 0 9 * * *"
+
+scheduling:
+  enabled: true
+
+auth:
+  jwt:
+    expirationDays: 30
+    secret: ${JWT_SECRET:ababababbbsadfweawgehrth}
+    issuer: sb-reservation-system-backend
+
+mail:
+  sender:
+    http:
+      client:
+        config:
+          connectionTimeout: 4000
+          port: 8080
+          readTimeout: 4000
+          uri: http://ec2-52-28-34-183.eu-central-1.compute.amazonaws.com
+
+server:
+  port: 8080
+

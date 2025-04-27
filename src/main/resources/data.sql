@@ -1,0 +1,286 @@
+
+INSERT INTO users (email, name, password)
+VALUES
+    ('user@wp.com', 'User Admin', 'user'),
+    ('employee1_salon1@wp.com', 'Adam Nowak', 'employee'),
+    ('employee2_salon1@wp.com', 'Krzysztof Kowalski', 'employee'),
+    ('employee1_salon2@wp.com', 'Piotr Wiśniewski', 'employee'),
+    ('employee2_salon2@wp.com', 'Tomasz Zieliński', 'employee'),
+    ('employee1_salon3@wp.com', 'Michał Wójcik', 'employee'),
+    ('employee2_salon3@wp.com', 'Marcin Kaczmarek', 'employee'),
+    ('employee3_salon3@wp.com', 'Jakub Mazur', 'employee'),
+    ('employee1_salon4@wp.com', 'Łukasz Dąbrowski', 'employee'),
+    ('employee1_salon5@wp.com', 'Anna Nowicka', 'employee'),
+    ('employee2_salon5@wp.com', 'Magdalena Lewandowska', 'employee');
+
+INSERT INTO "user_roles" (user_id, role_id)
+VALUES
+    (1, 4),
+    (2, 2), (3, 2),
+    (4, 2), (5, 2),
+    (6, 2), (7, 2), (8, 2),
+    (9, 2),
+    (10, 2), (11, 2);
+
+INSERT INTO "salon" (salon_name, category, city, zip_code, street, number, user_id)
+VALUES
+    ('Stylish Cuts', 'hair', 'Warsaw', '00-001', 'Main Street', '10', 1),
+    ('Glamour Hair Studio', 'hair', 'Krakow', '30-002', 'Flower Avenue', '15B', 1),
+    ('Elite Hair Spa', 'hair', 'Poznan', '60-003', 'Green Lane', '5A', 1),
+    ('Nail Art Studio', 'nails', 'Warsaw', '00-005', 'Beauty Street', '12', 1),
+    ('Perfect Nails', 'nails', 'Poznan', '60-006', 'Manicure Avenue', '8', 1);
+
+INSERT INTO "code" (code, is_consumed, data_generated, data_consumption, user_id)
+VALUES
+    ('123e4567-e89b-12d3-a456-426614174000', FALSE, '2024-11-03 10:00:00', NULL, NULL);
+
+INSERT INTO "opening_hours" (day_of_week, opening_time, closing_time, salon_id)
+VALUES
+    ('MONDAY', '09:00:00', '18:00:00', 1),
+    ('TUESDAY', '09:00:00', '18:00:00', 1),
+    ('WEDNESDAY', '09:00:00', '18:00:00', 1),
+    ('THURSDAY', '10:00:00', '17:00:00', 1),
+    ('FRIDAY', '09:00:00', '18:00:00', 1),
+    ('SATURDAY', '10:00:00', '15:00:00', 1),
+    ('SUNDAY', NULL, NULL, 1);
+
+INSERT INTO "opening_hours" (day_of_week, opening_time, closing_time, salon_id)
+VALUES
+    ('MONDAY', '09:00:00', '18:00:00', 2),
+    ('TUESDAY', '09:00:00', '18:00:00', 2),
+    ('WEDNESDAY', '09:00:00', '18:00:00', 2),
+    ('THURSDAY', '10:00:00', '17:00:00', 2),
+    ('FRIDAY', '09:00:00', '18:00:00', 2),
+    ('SATURDAY', '10:00:00', '15:00:00', 2),
+    ('SUNDAY', NULL, NULL, 2);
+
+INSERT INTO "opening_hours" (day_of_week, opening_time, closing_time, salon_id)
+VALUES
+    ('MONDAY', '09:00:00', '18:00:00', 3),
+    ('TUESDAY', '09:00:00', '18:00:00', 3),
+    ('WEDNESDAY', '09:00:00', '18:00:00', 3),
+    ('THURSDAY', '10:00:00', '17:00:00', 3),
+    ('FRIDAY', '09:00:00', '18:00:00', 3),
+    ('SATURDAY', '10:00:00', '15:00:00', 3),
+    ('SUNDAY', NULL, NULL, 3);
+
+INSERT INTO "opening_hours" (day_of_week, opening_time, closing_time, salon_id)
+VALUES
+    ('MONDAY', '09:00:00', '18:00:00', 4),
+    ('TUESDAY', '09:00:00', '18:00:00', 4),
+    ('WEDNESDAY', '09:00:00', '18:00:00', 4),
+    ('THURSDAY', '10:00:00', '17:00:00', 4),
+    ('FRIDAY', '09:00:00', '18:00:00', 4),
+    ('SATURDAY', '10:00:00', '15:00:00', 4),
+    ('SUNDAY', NULL, NULL, 4);
+
+INSERT INTO "opening_hours" (day_of_week, opening_time, closing_time, salon_id)
+VALUES
+    ('MONDAY', '09:00:00', '18:00:00', 5),
+    ('TUESDAY', '09:00:00', '18:00:00', 5),
+    ('WEDNESDAY', '09:00:00', '18:00:00', 5),
+    ('THURSDAY', '10:00:00', '17:00:00', 5),
+    ('FRIDAY', '09:00:00', '18:00:00', 5),
+    ('SATURDAY', '10:00:00', '15:00:00', 5),
+    ('SUNDAY', NULL, NULL, 5);
+
+
+INSERT INTO "employee" (user_id, salon_id)
+VALUES
+    (2, 1),
+    (3, 1),
+    (4, 2),
+    (5, 2),
+    (6, 3),
+    (7, 3),
+    (8, 3),
+    (9, 4),
+    (10,5),
+    (11,5);
+
+INSERT INTO "employee_availability" (day_of_week, start_time, end_time, employee_id)
+VALUES
+    ('MONDAY', '09:00:00', '17:00:00', 1),
+    ('TUESDAY', '09:00:00', '17:00:00', 1),
+    ('WEDNESDAY', '12:00:00', '18:00:00', 1),
+    ('THURSDAY', '12:00:00', '17:00:00', 1),
+    ('FRIDAY', '12:00:00', '14:00:00', 1),
+    ('SATURDAY', '10:00:00', '15:00:00', 1),
+    ('SUNDAY', NULL, NULL, 1);
+
+INSERT INTO "employee_availability" (day_of_week, start_time, end_time, employee_id)
+VALUES
+    ('MONDAY', '09:00:00', '17:00:00', 2),
+    ('TUESDAY', '09:00:00', '17:00:00', 2),
+    ('WEDNESDAY', '12:00:00', '18:00:00', 2),
+    ('THURSDAY', '12:00:00', '17:00:00', 2),
+    ('FRIDAY', '12:00:00', '14:00:00', 2),
+    ('SATURDAY', '10:00:00', '15:00:00', 2),
+    ('SUNDAY', NULL, NULL, 2);
+
+INSERT INTO "employee_availability" (day_of_week, start_time, end_time, employee_id)
+VALUES
+    ('MONDAY', '09:00:00', '17:00:00', 3),
+    ('TUESDAY', '09:00:00', '17:00:00', 3),
+    ('WEDNESDAY', '12:00:00', '18:00:00', 3),
+    ('THURSDAY', '12:00:00', '17:00:00', 3),
+    ('FRIDAY', '12:00:00', '14:00:00', 3),
+    ('SATURDAY', '10:00:00', '15:00:00', 3),
+    ('SUNDAY', NULL, NULL, 3);
+
+INSERT INTO "employee_availability" (day_of_week, start_time, end_time, employee_id)
+VALUES
+    ('MONDAY', '09:00:00', '17:00:00', 4),
+    ('TUESDAY', '09:00:00', '17:00:00', 4),
+    ('WEDNESDAY', '12:00:00', '18:00:00', 4),
+    ('THURSDAY', '12:00:00', '17:00:00', 4),
+    ('FRIDAY', '12:00:00', '14:00:00', 4),
+    ('SATURDAY', '10:00:00', '15:00:00', 4),
+    ('SUNDAY', NULL, NULL, 4);
+
+INSERT INTO "employee_availability" (day_of_week, start_time, end_time, employee_id)
+VALUES
+    ('MONDAY', '09:00:00', '17:00:00', 5),
+    ('TUESDAY', '09:00:00', '17:00:00', 5),
+    ('WEDNESDAY', '12:00:00', '18:00:00', 5),
+    ('THURSDAY', '12:00:00', '17:00:00', 5),
+    ('FRIDAY', '12:00:00', '14:00:00', 5),
+    ('SATURDAY', '10:00:00', '15:00:00', 5),
+    ('SUNDAY', NULL, NULL, 5);
+
+INSERT INTO "employee_availability" (day_of_week, start_time, end_time, employee_id)
+VALUES
+    ('MONDAY', '09:00:00', '17:00:00', 6),
+    ('TUESDAY', '09:00:00', '17:00:00', 6),
+    ('WEDNESDAY', '12:00:00', '18:00:00', 6),
+    ('THURSDAY', '12:00:00', '17:00:00', 6),
+    ('FRIDAY', '12:00:00', '14:00:00', 6),
+    ('SATURDAY', '10:00:00', '15:00:00', 6),
+    ('SUNDAY', NULL, NULL, 6);
+
+INSERT INTO "employee_availability" (day_of_week, start_time, end_time, employee_id)
+VALUES
+    ('MONDAY', '09:00:00', '17:00:00', 7),
+    ('TUESDAY', '09:00:00', '17:00:00', 7),
+    ('WEDNESDAY', '12:00:00', '18:00:00', 7),
+    ('THURSDAY', '12:00:00', '17:00:00', 7),
+    ('FRIDAY', '12:00:00', '14:00:00', 7),
+    ('SATURDAY', '10:00:00', '15:00:00', 7),
+    ('SUNDAY', NULL, NULL, 7);
+
+INSERT INTO "employee_availability" (day_of_week, start_time, end_time, employee_id)
+VALUES
+    ('MONDAY', '09:00:00', '17:00:00', 8),
+    ('TUESDAY', '09:00:00', '17:00:00', 8),
+    ('WEDNESDAY', '12:00:00', '18:00:00', 8),
+    ('THURSDAY', '12:00:00', '17:00:00', 8),
+    ('FRIDAY', '12:00:00', '14:00:00', 8),
+    ('SATURDAY', '10:00:00', '15:00:00', 8),
+    ('SUNDAY', NULL, NULL, 8);
+
+INSERT INTO "employee_availability" (day_of_week, start_time, end_time, employee_id)
+VALUES
+    ('MONDAY', '09:00:00', '17:00:00', 9),
+    ('TUESDAY', '09:00:00', '17:00:00', 9),
+    ('WEDNESDAY', '12:00:00', '18:00:00', 9),
+    ('THURSDAY', '12:00:00', '17:00:00', 9),
+    ('FRIDAY', '12:00:00', '14:00:00', 9),
+    ('SATURDAY', '10:00:00', '15:00:00', 9),
+    ('SUNDAY', NULL, NULL, 9);
+
+INSERT INTO "employee_availability" (day_of_week, start_time, end_time, employee_id)
+VALUES
+    ('MONDAY', '09:00:00', '17:00:00', 10),
+    ('TUESDAY', '09:00:00', '17:00:00', 10),
+    ('WEDNESDAY', '12:00:00', '18:00:00', 10),
+    ('THURSDAY', '12:00:00', '17:00:00', 10),
+    ('FRIDAY', '12:00:00', '14:00:00', 10),
+    ('SATURDAY', '10:00:00', '15:00:00', 10),
+    ('SUNDAY', NULL, NULL, 10);
+
+
+INSERT INTO "offer" (name, description, price, duration, salon_id)
+VALUES
+    ('Haircut', 'Basic haircut service', 50.00, '00:30:00', 1), --1 employe 1 2
+    ('Men Haircut', 'Men’s haircut and styling', 60.00, '00:40:00', 1), --2
+    ('Women Haircut', 'Women’s haircut and styling', 80.00, '00:50:00', 1), --3
+    ('Hair Coloring', 'Full hair coloring service', 200.00, '02:00:00', 1), --4
+    ('Hair Treatment', 'Nourishing hair treatment', 120.00, '01:00:00', 1), --5
+
+    ('Haircut', 'Professional haircut service', 55.00, '00:35:00', 2), --6 employe 3 4
+    ('Balayage', 'Trendy balayage hair coloring', 250.00, '02:30:00', 2), --7
+    ('Hair Straightening', 'Keratin straightening treatment', 180.00, '01:30:00', 2), --8
+    ('Blow-Dry', 'Professional hair drying and styling', 70.00, '00:45:00', 2),  --9
+
+    ('Classic Haircut', 'Classic men & women haircut', 50.00, '00:40:00', 3), --10 employe 5 6 7
+    ('Scalp Treatment', 'Therapeutic scalp care service', 100.00, '01:15:00', 3), --11
+    ('Hair Highlights', 'Partial or full highlights', 220.00, '02:15:00', 3), --12
+    ('Deep Conditioning', 'Restorative deep conditioning', 90.00, '01:00:00', 3), --13
+
+    ('Classic Manicure', 'Basic nail care and polish', 70.00, '00:45:00', 4), --14 employe 8
+    ('Gel Manicure', 'Long-lasting gel polish manicure', 110.00, '01:00:00', 4), --15
+    ('French Manicure', 'Elegant French-style nails', 120.00, '01:15:00', 4), --16
+    ('Spa Pedicure', 'Luxury pedicure with massage', 150.00, '01:30:00', 4), --17
+    ('Nail Extensions', 'Professional nail extensions', 180.00, '02:00:00', 4), --18
+
+    ('Express Manicure', 'Quick and efficient manicure', 60.00, '00:30:00', 5), --19 employe 9 10
+    ('Hybrid Manicure', 'Durable hybrid nail polish', 100.00, '01:00:00', 5), --20
+    ('Deluxe Pedicure', 'Full pedicure with spa treatment', 140.00, '01:30:00', 5), --21
+    ('Nail Art Design', 'Custom nail art and decorations', 130.00, '01:15:00', 5), --22
+    ('Acrylic Nails', 'Strong acrylic nail extensions', 190.00, '02:00:00', 5);--23
+
+
+
+INSERT INTO "employee_offers" (employee_id, offer_id)
+VALUES
+    (1, 1),
+    (1, 2),
+    (1, 3),
+    (1, 4),
+    (2, 1),
+    (2, 2),
+    (2, 4),
+    (2, 5),
+    (3, 6),
+    (3, 7),
+    (4, 8),
+    (4, 9),
+    (4, 6),
+    (4, 7),
+    (5, 10),
+    (5, 11),
+    (5, 12),
+    (5, 13),
+    (6, 10),
+    (6, 13),
+    (7, 12),
+    (7, 13),
+    (8, 14),
+    (8, 15),
+    (8, 16),
+    (8, 17),
+    (8, 18),
+    (9, 19),
+    (9, 20),
+    (9, 21),
+    (9, 22),
+    (9, 23),
+    (10, 20),
+    (10, 22),
+    (10, 23);
+
+INSERT INTO image (id, name, image_url, image_id, salon_id)
+VALUES (1, 'fryzjer', 'http://res.cloudinary.com/deryo4cqr/image/upload/v1736939359/xnnwdkgb7gkwbdh2yhxk.jpg', 'xnnwdkgb7gkwbdh2yhxk', 1);
+
+
+INSERT INTO image (id, name, image_url, image_id, salon_id)
+VALUES (2, 'fryzjer', 'http://res.cloudinary.com/deryo4cqr/image/upload/v1736939741/l7mqa6ijo0kidb1xnndl.jpg', 'l7mqa6ijo0kidb1xnndl', 2);
+
+INSERT INTO image (id, name, image_url, image_id, salon_id)
+VALUES (3, 'masazge2', 'http://res.cloudinary.com/deryo4cqr/image/upload/v1736940009/wfufrl7ajvk4k2dn8tnr.jpg', 'wfufrl7ajvk4k2dn8tnr', 3);
+
+INSERT INTO image (id, name, image_url, image_id, salon_id)
+VALUES (4, 'masazge2', 'http://res.cloudinary.com/deryo4cqr/image/upload/v1736940009/celcixz9wzh4hskyk1ba.jpg', 'celcixz9wzh4hskyk1ba', 4);
+
+INSERT INTO image (id, name, image_url, image_id, salon_id)
+VALUES (5, 'masazge2', 'http://res.cloudinary.com/deryo4cqr/image/upload/v1736940009/frzypw3jghovglmw4rue.jpg', 'frzypw3jghovglmw4rue', 5);

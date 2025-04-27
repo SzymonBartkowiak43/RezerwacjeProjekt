@@ -1,0 +1,12 @@
+spring:
+#  application:
+#    name: SystemRezerwacji_TDD
+#  datasource:
+#    url: jdbc:h2:mem:test
+#    email: sa
+#  jpa:
+#    hibernate:
+#      ddl-auto: validate
+#  h2:
+#    console:
+#      enabled: true

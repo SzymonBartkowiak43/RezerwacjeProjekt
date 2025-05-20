@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @Log4j2
-@CrossOrigin(origins = "http://164.90.190.165")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ReservationController {
     private final ReservationFacade reservationFacade;
 

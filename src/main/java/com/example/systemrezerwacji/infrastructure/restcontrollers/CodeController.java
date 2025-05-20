@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin(origins = "http://164.90.190.165")
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/reservation-service/code")
 public class CodeController {
     private final CodeFacade codeFacade;

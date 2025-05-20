@@ -36,5 +36,20 @@ services:
     ports:
       - "8082:8081"
 
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: system-rezerwacji
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      REDIS_HOST: redis
+      POSTGRES_HOST: postgres
+    restart: always
+
 volumes:
   postgres_data:

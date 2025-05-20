@@ -14,7 +14,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://164.90.190.165")
+@CrossOrigin(origins = "http://localhost:3000")
 public class EmployeeController {
     private final EmployeeFacade employeeFacade;
 

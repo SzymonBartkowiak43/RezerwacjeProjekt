@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/owner")
 @AllArgsConstructor
-@CrossOrigin(origins = "http://164.90.190.165")
+@CrossOrigin(origins = "http://localhost:3000")
 public class OwnerController {
 
     private final SalonFacade salonFacade;

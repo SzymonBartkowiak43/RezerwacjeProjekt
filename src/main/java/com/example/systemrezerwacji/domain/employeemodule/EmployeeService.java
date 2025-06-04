@@ -8,6 +8,8 @@ import com.example.systemrezerwacji.domain.offermodule.Offer;
 import com.example.systemrezerwacji.domain.offermodule.dto.OfferDto;
 import com.example.systemrezerwacji.domain.usermodule.User;
 import org.springframework.stereotype.Service;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.time.*;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ import java.util.stream.Collectors;
 
 @Service
 class EmployeeService {
+    private static final Logger log = LogManager.getLogger(EmployeeService.class);
     public static final int MINUTES_IN_INTERVAL = 15;
 
     private final EmployeeRepository employeeRepository;
@@ -25,14 +28,17 @@ class EmployeeService {
     EmployeeService(EmployeeRepository employeeRepository, EmployeeAvailabilityService employeeAvailabilityService) {
         this.employeeRepository = employeeRepository;
         this.employeeAvailabilityService = employeeAvailabilityService;
+        log.info("EmployeeService initialized");
     }
 
     Employee saveEmployee(Employee employee) {
+        log.info("Employee saved with id: {}", employee.getId());
         return employeeRepository.save(employee);
     }
 
 
     List<EmployeeAvailability> createAvailabilityList(List<EmployeeAvailabilityDto> availabilityDto, Employee employee) {
+        log.debug("Creating availability list for employeeId: {}", employee.getId());
         return availabilityDto.stream()
                 .map(dto -> {
                     EmployeeAvailability availability = new EmployeeAvailability();
@@ -46,16 +52,18 @@ class EmployeeService {
     }
 
     List<Long> findEmployeesIdByOfferId(Long offerId) {
+        log.info("Finding employees for offerId: {}", offerId);
         List<Employee> offersId = employeeRepository.findByOffersId(offerId);
-
+        log.info("Found {} employees for offerId: {}", offersId.size(), offerId);
         return offersId.stream()
                 .map(Employee::getId)
                 .toList();
     }
 
     List<Long> findEmployeesUserIdById(List<Long> employeesId) {
+        log.debug("Finding user IDs for employees: {}", employeesId);
         List<Employee> allById = (List<Employee>) employeeRepository.findAllById(employeesId);
-
+        log.info("Resolved {} user IDs from {} employee IDs", allById.size(), employeesId.size());
         return allById.stream()
                 .map(Employee::getUser)
                 .map(User::getId)
@@ -64,9 +72,12 @@ class EmployeeService {
 
 
     List<AvailableTermDto> findAvailability(Long employeeId, LocalDate date, LocalTime duration, List<AvailableTermDto> employeeBusyTermsList) {
+        log.info("Finding availability for employeeId: {} on {}", employeeId, date);
+
         DayOfWeek dayOfWeek = date.getDayOfWeek();
 
         if (date.isBefore(LocalDate.now())) {
+            log.warn("Requested availability for past date: {}", date);
             return new ArrayList<>();
         }
         EmployeeAvailability availability =  employeeAvailabilityService.findEmployeeAvability(employeeId, dayOfWeek);
@@ -80,8 +91,12 @@ class EmployeeService {
     }
 
     Employee addOfferToEmployee(Long employeeId, Offer offer) {
+        log.debug("Getting user ID for employeeId: {}", employeeId);
         Employee employee = employeeRepository.findById(employeeId)
-                .orElseThrow(() -> new IllegalArgumentException("Employee not found"));
+                .orElseThrow(() -> {
+                    log.error("Employee not found with id: {}", employeeId);
+                    return new IllegalArgumentException("Employee not found");
+                });
 
         if(employee.getOffers().contains(offer)) {
             throw new EmployeeDuplicateOfferException();
@@ -99,6 +114,7 @@ class EmployeeService {
 
 
     private List<AvailableTermDto> generateAvailableTerms(LocalTime start, LocalTime end, LocalTime duration, List<AvailableTermDto> employeeBusyTermsList) {
+        log.debug("Generating terms between {} and {} with duration {}", start, end, duration);
         List<AvailableTermDto> termsList = new ArrayList<>();
 
         int serviceDurationMinutes = duration.getHour() * 60 + duration.getMinute();
@@ -113,7 +129,7 @@ class EmployeeService {
             }
             currentStart = currentStart.plusMinutes(MINUTES_IN_INTERVAL);
         }
-
+        log.debug("Generated {} raw terms before filtering", termsList.size());
         return termsList.stream()
                 .filter(term -> isTermAvailable(term, employeeBusyTermsList))
                 .collect(Collectors.toList());
